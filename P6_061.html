@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+
+    <style>
+        .selesai {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>To-Do List</h1>
+
+    <input type="text" id="tugas" placeholder="Masukkan tugas">
+
+    <button onclick="tambahTugas()">Tambah</button>
+    <button onclick="tampilkanTugas()">Tampilkan Daftar Tugas</button>
+
+    <ul id="daftarTugas"></ul>
+
+    <script>
+        let daftar = [];
+
+        function tambahTugas() {
+            const tugas = document.getElementById("tugas").value;
+
+            if (tugas != "") {
+                daftar.push(tugas);
+
+                document.getElementById("tugas").value = "";
+
+                alert("Tugas berhasil ditambahkan!");
+            } else {
+                alert("Masukkan tugas terlebih dahulu!");
+            }
+        }
+
+        function tampilkanTugas() {
+            const daftarTugas = document.getElementById("daftarTugas");
+
+            daftarTugas.innerHTML = "";
+
+            daftar.forEach(function(tugas, index) {
+                const li = document.createElement("li");
+
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+
+                const span = document.createElement("span");
+                span.textContent = tugas;
+
+                checkbox.addEventListener("change", function() {
+                    if (checkbox.checked) {
+                        span.classList.add("selesai");
+                    } else {
+                        span.classList.remove("selesai");
+                    }
+                });
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+
+                daftarTugas.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>

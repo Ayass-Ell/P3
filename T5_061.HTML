@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengubah Warna</title>
+</head>
+
+<body>
+    <h1>Pengubah Warna Latar Belakang</h1>
+    <button id="btnWarna">Ubah Warna</button>
+    <script>
+        const tombol = document.getElementById("btnWarna");
+        tombol.addEventListener("click", function() {
+            const warna = [
+                "red",
+                "blue",
+                "green",
+                "yellow",
+                "purple",
+                "orange",
+                "pink",
+                "cyan"
+            ];
+            const angkaAcak = Math.floor(Math.random() * warna.length);
+
+            document.body.style.backgroundColor = warna[angkaAcak];
+        });
+    </script>
+
+</body>
+</html>
